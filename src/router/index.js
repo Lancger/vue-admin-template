@@ -56,11 +56,11 @@ export const constantRoutes = [
   },
 
   {
-    path: '/example',
+    path: '/modify',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: '变更管理', icon: 'example' },
+    alwaysShow: true,
+    name: 'Modify',
+    meta: { title: '变更管理', icon: 'dashboard' },
     children: [
       {
         path: 'table',
@@ -69,10 +69,10 @@ export const constantRoutes = [
         meta: { title: '变更列表', icon: 'table' }
       },
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: '变更属性', icon: 'tree' }
+        path: 'modifyType',
+        name: 'modifyType',
+        component: () => import('@/views/modify/modify-config/index'),
+        meta: { title: '变更属性', icon: 'table' }
       }
     ]
   },
