@@ -77,56 +77,38 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/nested',
+    path: '/sys',
     component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
-    meta: {
-      title: '系统管理',
-      icon: 'nested'
-    },
+    alwaysShow: true,
+    name: 'Sys',
+    meta: { title: '系统管理', icon: 'dashboard', roles: ['ADMIN', 'IAAS'] },
     children: [
       {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: '用户管理' },
-        children: [
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: '权限管理' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: '权限管理' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: '用户组管理' }
-          }
-        ]
+        path: 'user',
+        name: 'User',
+        component: () => import('@/views/account/user/index'),
+        meta: { title: '用户管理', icon: 'dashboard' }
       },
       {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        meta: { title: '项目管理' }
+        path: 'group',
+        name: 'Group',
+        component: () => import('@/views/account/group/index'),
+        meta: { title: '用户组管理', icon: 'dashboard' }
       },
       {
-        path: 'menu3',
-        component: () => import('@/views/nested/menu2/index'),
-        meta: { title: 'API管理' }
+        path: 'perm',
+        name: 'Perm',
+        component: () => import('@/views/perm/index'),
+        meta: { title: '权限管理', icon: 'password' }
+      },
+      {
+        path: 'project',
+        name: 'Project',
+        component: () => import('@/views/project/index'),
+        meta: { title: '项目管理', icon: 'password' }
       }
     ]
   },
-
   {
     path: 'external-link',
     component: Layout,
